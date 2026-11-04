@@ -62,6 +62,9 @@ A property-management dashboard for Nigerian landlords, built as a portfolio pro
 - Every notable choice gets a short record in `docs/decisions/NNNN-title.md`
   (context → decision → alternatives → consequences).
 - README and this file are updated in the same PR as the change they describe.
+- `docs/flows/` holds one living doc per flow (git and GitHub, workspace, later auth, payments, …).
+  A PR that changes a flow updates its doc, and a new flow gets a new file plus a row in
+  `docs/README.md`.
 
 ## Commands
 
