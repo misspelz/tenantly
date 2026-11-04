@@ -1,0 +1,10 @@
+{
+  "name": "@tenantly/root",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "packageManager": "pnpm@11.23.0",
+  "engines": {
+    "node": ">=24"
+  }
+}
