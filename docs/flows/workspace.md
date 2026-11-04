@@ -35,7 +35,7 @@ tenantly/
 | `packageManager` | `pnpm@11.23.0` | pnpm switches to this exact version, so local machines and CI install identically. |
 | `engines.node` | `>=24` | Enforced at install time via `engineStrict`. |
 | `scripts` | `turbo run <task>` | Thin wrappers. Each package owns its real commands. |
-| `devDependencies` | `turbo` (exact) | Root-only tools are pinned here, not in the catalog. |
+| `devDependencies` | `turbo` (exact), `typescript` (catalog) | Root-only tools are pinned here. TypeScript is shared, so it comes from the catalog. |
 
 ## `pnpm-workspace.yaml`
 
@@ -68,7 +68,43 @@ A `pnpm build` that reports "0 tasks" means no package defines that script yet.
 
 ## Shared TypeScript config
 
-_To do (week 1, step 4)._
+`packages/typescript-config` holds presets that every package's `tsconfig.json` extends, so strictness is set once and can't drift between packages. TypeScript itself is in the catalog (`typescript: catalog:`) and also installed at the root, so the editor uses the workspace version.
+
+| Preset | For | Adds to base |
+| ------ | --- | ------------ |
+| `base.json` | Everything (via the others) | Target ES2024 and the strictness flags below |
+| `nextjs.json` | `apps/web`, `apps/admin` | DOM libs, `Bundler` resolution, `react-jsx`, `noEmit` (Next.js compiles), the `next` plugin |
+| `node.json` | `apps/api` | `NodeNext` resolution, Node types |
+| `library.json` | Packages built to `dist/` (`contracts`) | `NodeNext`, `.d.ts` declarations + declaration maps, source maps |
+
+A package uses one like this:
+
+```jsonc
+// package.json
+"devDependencies": { "@tenantly/typescript-config": "workspace:*", "typescript": "catalog:" }
+
+// tsconfig.json
+{ "extends": "@tenantly/typescript-config/nextjs.json", "include": ["src"] }
+```
+
+`workspace:*` links the local package instead of looking for it on npm. Paths like `outDir`, `rootDir` and `include` always go in the **package's** tsconfig, never in a preset, because TypeScript resolves them relative to the file that declares them, which would be `packages/typescript-config/`.
+
+**Strictness beyond `strict`:**
+
+| Flag | Catches |
+| ---- | ------- |
+| `noUncheckedIndexedAccess` | `rows[0]` and `record[key]` are typed `T \| undefined`, so a missing item must be handled |
+| `noPropertyAccessFromIndexSignature` | Dynamic keys must use `obj["key"]`, which makes it visible that the key may not exist |
+| `noImplicitOverride` | Overriding a class method needs the `override` keyword |
+| `noFallthroughCasesInSwitch` | A `case` that runs into the next one by accident |
+| `verbatimModuleSyntax` | Type-only imports must say `import type`, so they're removed from the output and never cause runtime imports |
+| `isolatedModules` | Each file can be compiled alone, which is how Next.js, Vite and esbuild work |
+
+`exactOptionalPropertyTypes` was left off. It's stricter still, but clashes with many libraries' types (React Hook Form, some Zod patterns).
+
+**Why `NodeNext` for libraries and not `Bundler`:** `contracts` is imported by the API, which runs on plain Node with no bundler. `NodeNext` follows Node's real rules (relative imports need a `.js` extension), so anything that compiles also runs. Bundled Next.js apps can use the looser `Bundler` mode.
+
+Check what a preset resolves to with `pnpm exec tsc --showConfig -p <tsconfig>`.
 
 ## Linting and formatting
 

@@ -4,7 +4,8 @@ packages:
 
 # One version per dependency, shared by every package via `"name": "catalog:"`.
 # Entries are added as packages start using them.
-catalog: {}
+catalog:
+  typescript: 7.0.2
 
 # Refuse to install when Node or pnpm don't satisfy `engines`.
 engineStrict: true
