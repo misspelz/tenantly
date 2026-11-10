@@ -6,7 +6,7 @@ How the monorepo is wired: pnpm finds and links the packages, the catalog keeps 
 
 ```txt
 tenantly/
-├── apps/          # deployable: web, admin, api (week 1, step 7)
+├── apps/          # deployable: web, admin, api
 ├── packages/      # shared: typescript-config, eslint-config, ui, contracts
 ├── docs/
 ├── package.json   # root: scripts that call turbo, root-only dev tools
@@ -128,6 +128,18 @@ Husky runs two checks:
 - `commit-msg` runs commitlint with the Conventional Commits preset.
 
 These are fast, staged-file checks. The full workspace lint and type checks remain available as `pnpm lint` and `pnpm check-types`.
+
+## Shared UI foundation
+
+`packages/ui` is the shared home for UI styles and, later, reusable components. It currently exports `@tenantly/ui/styles.css`, which imports Tailwind CSS v4 and defines semantic slate-and-emerald colour tokens.
+
+The semantic utilities (`bg-background`, `text-foreground`, `bg-card`, `text-muted-foreground`, `border-border`, and `bg-primary`) map to CSS variables. The default `:root` values are light; setting `data-mode="dark"` on the document root selects the dark values. Tailwind's `dark:` variant uses that same attribute.
+
+Storybook uses the React/Vite framework and the Tailwind Vite plugin. Its global Theme toolbar changes `data-mode` for previewing both token sets, and the accessibility addon is enabled. This theme control is a Storybook preview aid, not an application theme provider or user-facing toggle.
+
+Run the component explorer with `pnpm --filter @tenantly/ui storybook` (port 6006). Build its static site with `pnpm --filter @tenantly/ui build`; the root `pnpm build` includes it through Turborepo.
+
+The token set and theme selector are recorded in [decision 0003](../decisions/0003-ui-theme-tokens.md). Storybook verifies the tokens in its preview; importing the stylesheet into the Next.js apps has not yet been validated.
 
 ## Open questions
 
