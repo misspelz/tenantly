@@ -11,6 +11,7 @@ storybook-static/
 # Tool caches
 .turbo/
 *.tsbuildinfo
+next-env.d.ts
 coverage/
 playwright-report/
 test-results/

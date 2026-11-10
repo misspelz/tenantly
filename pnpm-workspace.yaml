@@ -5,7 +5,16 @@ packages:
 # One version per dependency, shared by every package via `"name": "catalog:"`.
 # Entries are added as packages start using them.
 catalog:
-  typescript: 7.0.2
+  # 6.0, not 7: typescript-eslint supports TypeScript <6.1 (docs/decisions/0002).
+  typescript: 6.0.3
+  # Matches the Node major we run (.nvmrc), so types never offer APIs Node 24 lacks.
+  "@types/node": 24.19.2
+  eslint: 10.14.0
+  next: 16.4.4
+  react: 19.3.1
+  react-dom: 19.3.1
+  "@types/react": 19.3.0
+  "@types/react-dom": 19.3.0
 
 # Refuse to install when Node or pnpm don't satisfy `engines`.
 engineStrict: true
@@ -15,4 +24,5 @@ engineStrict: true
 minimumReleaseAge: 1440
 
 # Dependencies may not run install scripts unless listed here.
-allowBuilds: {}
+allowBuilds:
+  esbuild: true

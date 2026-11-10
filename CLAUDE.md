@@ -26,18 +26,18 @@ A property-management dashboard for Nigerian landlords, built as a portfolio pro
 
 ## Stack (planned; mark each part as built when it lands)
 
-| Area      | Choice                                                                    |
-| --------- | ------------------------------------------------------------------------- |
-| Workspace | pnpm 11 workspaces + `catalog:` versions, Turborepo, Node 24              |
-| Language  | TypeScript, `strict` everywhere                                           |
-| `apps/web`   | Next.js marketing site                                                 |
-| `apps/admin` | Next.js App Router dashboard                                           |
-| `apps/api`   | Hono + Postgres via Drizzle (Docker locally, Neon hosted)              |
-| `packages/ui` | Tailwind v4 design system + Storybook (a11y addon)                    |
-| `packages/contracts` | Zod schemas shared by api and admin, built to `dist/`          |
-| Shared config | `packages/typescript-config`, `packages/eslint-config`, Prettier      |
-| Quality   | husky + lint-staged + commitlint (Conventional Commits), GitHub Actions CI |
-| Auth      | Email + password; session token in an httpOnly cookie                     |
+| Area                 | Choice                                                                     |
+| -------------------- | -------------------------------------------------------------------------- |
+| Workspace            | pnpm 11 workspaces + `catalog:` versions, Turborepo, Node 24               |
+| Language             | TypeScript, `strict` everywhere                                            |
+| `apps/web`           | Next.js marketing site                                                     |
+| `apps/admin`         | Next.js App Router dashboard                                               |
+| `apps/api`           | Hono + Postgres via Drizzle (Docker locally, Neon hosted)                  |
+| `packages/ui`        | Tailwind v4 design system + Storybook (a11y addon)                         |
+| `packages/contracts` | Zod schemas shared by api and admin, built to `dist/`                      |
+| Shared config        | `packages/typescript-config`, `packages/eslint-config`, Prettier           |
+| Quality              | husky + lint-staged + commitlint (Conventional Commits), GitHub Actions CI |
+| Auth                 | Email + password; session token in an httpOnly cookie                      |
 
 ## Roadmap
 
@@ -68,7 +68,16 @@ A property-management dashboard for Nigerian landlords, built as a portfolio pro
 
 ## Commands
 
-_None yet. Add them here as they're created (install, dev, build, lint, check-types, test)._
+| Command             | Does                                       |
+| ------------------- | ------------------------------------------ |
+| `pnpm install`      | Install workspace dependencies             |
+| `pnpm dev`          | Run app development servers                |
+| `pnpm build`        | Build all packages and apps with Turborepo |
+| `pnpm lint`         | Lint all packages and apps                 |
+| `pnpm check-types`  | Type-check all packages and apps           |
+| `pnpm test`         | Run tests (none are defined yet)           |
+| `pnpm format`       | Format supported files with Prettier       |
+| `pnpm format:check` | Check formatting without changing files    |
 
 ## Boundaries
 

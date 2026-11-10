@@ -2,7 +2,7 @@
 
 A property-management dashboard for Nigerian landlords: properties, units, tenants, leases, rent tracking and a payments ledger, in one place.
 
-> **Status:** in progress, week 1 of 8. The monorepo shell is being set up and there's nothing to run yet. See the [roadmap](#roadmap).
+> **Status:** in progress, week 1 of 8. The apps are scaffolds; product features are not implemented yet. See the [roadmap](#roadmap).
 
 ## What it does
 
@@ -15,17 +15,17 @@ A property-management dashboard for Nigerian landlords: properties, units, tenan
 
 ## Stack
 
-| Area | Choice |
-| ---- | ------ |
-| Monorepo | pnpm workspaces with a version catalog, Turborepo |
-| Language | TypeScript (strict) |
-| Marketing site | Next.js (`apps/web`) |
-| Dashboard | Next.js App Router (`apps/admin`) |
-| API | Hono, Drizzle ORM, Postgres (Docker locally, Neon hosted) (`apps/api`) |
-| Design system | Tailwind CSS v4, Storybook with accessibility checks (`packages/ui`) |
-| Shared schemas | Zod, used by both the API and the dashboard (`packages/contracts`) |
-| Auth | Email and password; session in an httpOnly cookie; role checks enforced in the API |
-| Quality | ESLint, Prettier, husky, commitlint, GitHub Actions |
+| Area           | Choice                                                                             |
+| -------------- | ---------------------------------------------------------------------------------- |
+| Monorepo       | pnpm workspaces with a version catalog, Turborepo                                  |
+| Language       | TypeScript (strict)                                                                |
+| Marketing site | Next.js (`apps/web`)                                                               |
+| Dashboard      | Next.js App Router (`apps/admin`)                                                  |
+| API            | Hono, Drizzle ORM, Postgres (Docker locally, Neon hosted) (`apps/api`)             |
+| Design system  | Tailwind CSS v4, Storybook with accessibility checks (`packages/ui`)               |
+| Shared schemas | Zod, used by both the API and the dashboard (`packages/contracts`)                 |
+| Auth           | Email and password; session in an httpOnly cookie; role checks enforced in the API |
+| Quality        | ESLint, Prettier, husky, commitlint, GitHub Actions                                |
 
 ## Repository layout
 
@@ -57,26 +57,28 @@ pnpm install
 pnpm build
 ```
 
-| Command | Does |
-| ------- | ---- |
-| `pnpm dev` | Run every app in development |
-| `pnpm build` | Build everything, in dependency order, with caching |
-| `pnpm lint` | Lint every package |
-| `pnpm check-types` | Type-check every package |
-| `pnpm test` | Run tests |
+| Command             | Does                                                |
+| ------------------- | --------------------------------------------------- |
+| `pnpm dev`          | Run every app in development                        |
+| `pnpm build`        | Build everything, in dependency order, with caching |
+| `pnpm lint`         | Lint every package                                  |
+| `pnpm check-types`  | Type-check every package                            |
+| `pnpm test`         | Run tests                                           |
+| `pnpm format`       | Format supported files with Prettier                |
+| `pnpm format:check` | Check formatting without changing files             |
 
 ## Roadmap
 
-| Week | Focus | Status |
-| ---- | ----- | ------ |
-| 1 | Monorepo shell: workspaces, Turborepo, shared configs, git hooks | In progress |
-| 2 | Design system, tokens, dark mode, Storybook; shared schemas | |
-| 3 | API and database: schema, migrations, seed data, errors, pagination | |
-| 4 | Authentication and role-based access, end to end | |
-| 5 | Dashboard: properties, units, tenants | |
-| 6 | Money: leases, rent, payments ledger, overview charts | |
-| 7 | Photo uploads, rent reminder emails, live updates | |
-| 8 | Tests, CI, deployment | |
+| Week | Focus                                                               | Status      |
+| ---- | ------------------------------------------------------------------- | ----------- |
+| 1    | Monorepo shell: workspaces, Turborepo, shared configs, git hooks    | In progress |
+| 2    | Design system, tokens, dark mode, Storybook; shared schemas         |             |
+| 3    | API and database: schema, migrations, seed data, errors, pagination |             |
+| 4    | Authentication and role-based access, end to end                    |             |
+| 5    | Dashboard: properties, units, tenants                               |             |
+| 6    | Money: leases, rent, payments ledger, overview charts               |             |
+| 7    | Photo uploads, rent reminder emails, live updates                   |             |
+| 8    | Tests, CI, deployment                                               |             |
 
 ## Docs
 
