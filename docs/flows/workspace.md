@@ -141,6 +141,24 @@ Run the component explorer with `pnpm --filter @tenantly/ui storybook` (port 600
 
 The token set and theme selector are recorded in [decision 0003](../decisions/0003-ui-theme-tokens.md). Storybook verifies the tokens in its preview; importing the stylesheet into the Next.js apps has not yet been validated.
 
+## Shared contracts
+
+`packages/contracts` contains Zod schemas and inferred TypeScript types shared by the API and admin app. Its package export points to the compiled `dist/` output, so consumers use the same built entry point rather than importing package source directly.
+
+The package extends `@tenantly/typescript-config/library.json`, which uses Node's `NodeNext` resolution and emits JavaScript, declarations, declaration maps, and source maps. Its root export is defined in `package.json`; add public schemas and types to `src/index.ts` and export them there.
+
+The initial `PropertySchema` validates a UUID `id` and a trimmed, non-empty `name`. Both `apps/api` and `apps/admin` depend on `@tenantly/contracts` and import this schema to demonstrate shared consumption. Turborepo's `^build` dependency builds the contracts package before dependent app build, lint, and type-check tasks.
+
+Useful package commands:
+
+| Command                                         | Does                              |
+| ----------------------------------------------- | --------------------------------- |
+| `pnpm --filter @tenantly/contracts build`       | Compile the package to `dist/`    |
+| `pnpm --filter @tenantly/contracts lint`        | Lint the package                  |
+| `pnpm --filter @tenantly/contracts check-types` | Type-check without emitting files |
+
+Use the root `pnpm build`, `pnpm lint`, and `pnpm check-types` commands to validate the package together with its consumers.
+
 ## Open questions
 
 - pnpm 12 is out. We're on 11 to match the brief. If we upgrade, earlier is cheaper.
