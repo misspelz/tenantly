@@ -2,7 +2,7 @@
 
 A property-management dashboard for Nigerian landlords: properties, units, tenants, leases, rent tracking and a payments ledger, in one place.
 
-> **Status:** in progress, week 1 of 8. The apps are scaffolds; product features are not implemented yet. See the [roadmap](#roadmap).
+> **Status:** in progress, week 2 of 8. The monorepo shell and UI foundation are complete; the shared contracts package is in progress. Product features are not implemented yet. See the [roadmap](#roadmap).
 
 ## What it does
 
@@ -71,8 +71,8 @@ pnpm build
 
 | Week | Focus                                                               | Status      |
 | ---- | ------------------------------------------------------------------- | ----------- |
-| 1    | Monorepo shell: workspaces, Turborepo, shared configs, git hooks    | In progress |
-| 2    | Design system, tokens, dark mode, Storybook; shared schemas         |             |
+| 1    | Monorepo shell: workspaces, Turborepo, shared configs, git hooks    | Complete    |
+| 2    | UI foundation: tokens, dark mode, Storybook; shared contracts       | In progress |
 | 3    | API and database: schema, migrations, seed data, errors, pagination |             |
 | 4    | Authentication and role-based access, end to end                    |             |
 | 5    | Dashboard: properties, units, tenants                               |             |
@@ -83,7 +83,7 @@ pnpm build
 ## Docs
 
 - [How the repo works](docs/README.md): one doc per flow (git, workspace, and more as they're built)
-- Decision records: [`docs/decisions/`](docs/decisions/) (coming in week 1)
+- Decision records: [`docs/decisions/`](docs/decisions/)
 
 ## Contributing
 
