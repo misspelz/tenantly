@@ -45,6 +45,9 @@ catalogs:
     typescript:
       specifier: 6.0.3
       version: 6.0.3
+    zod:
+      specifier: ^4.6.7
+      version: 4.6.7
 
 importers:
 
@@ -77,6 +80,9 @@ importers:
 
   apps/admin:
     dependencies:
+      '@tenantly/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       next:
         specifier: 'catalog:'
         version: 16.4.4(@babel/core@7.29.7)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -114,6 +120,9 @@ importers:
       '@hono/node-server':
         specifier: 2.1.6
         version: 2.1.6(hono@4.13.16)
+      '@tenantly/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       hono:
         specifier: 4.13.16
         version: 4.13.16
@@ -164,6 +173,25 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.3.0(@types/react@19.3.0)
+      eslint:
+        specifier: 'catalog:'
+        version: 10.14.0(jiti@2.7.0)
+      typescript:
+        specifier: 'catalog:'
+        version: 6.0.3
+
+  packages/contracts:
+    dependencies:
+      zod:
+        specifier: 'catalog:'
+        version: 4.6.7
+    devDependencies:
+      '@tenantly/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@tenantly/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
       eslint:
         specifier: 'catalog:'
         version: 10.14.0(jiti@2.7.0)
