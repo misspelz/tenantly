@@ -47,8 +47,8 @@ A property-management dashboard for Nigerian landlords, built as a portfolio pro
 4. **Auth + RBAC**, end to end
 5. **Core dashboard:** properties, units, tenants (URL-kept lists, drawers, forms)
 6. **Money:** leases, rent, payments ledger, overview charts
-7. **Extras:** photo uploads, rent reminder emails, live updates
-8. **Ship:** unit + Playwright tests, CI with caching, deploy, README, decision log
+7. **Extras + marketing site:** photo uploads, rent reminder emails, live updates, landing page, logo and favicon
+8. **Ship:** unit + Playwright tests, CI with caching, deploy the apps and marketing site, README, decision log
 
 **Current:** week 3 complete (API and database foundation); next is authentication and RBAC.
 
