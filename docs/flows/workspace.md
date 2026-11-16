@@ -147,7 +147,9 @@ The token set and theme selector are recorded in [decision 0003](../decisions/00
 
 The package extends `@tenantly/typescript-config/library.json`, which uses Node's `NodeNext` resolution and emits JavaScript, declarations, declaration maps, and source maps. Its root export is defined in `package.json`; add public schemas and types to `src/index.ts` and export them there.
 
-The initial `PropertySchema` validates a UUID `id` and a trimmed, non-empty `name`. Both `apps/api` and `apps/admin` depend on `@tenantly/contracts` and import this schema to demonstrate shared consumption. Turborepo's `^build` dependency builds the contracts package before dependent app build, lint, and type-check tasks.
+The contracts package exports property creation and response schemas (including the address and timestamps), pagination query and metadata schemas, and a standard API error schema. Both `apps/api` and `apps/admin` depend on `@tenantly/contracts`. Turborepo's `^build` dependency builds the contracts package before dependent app build, lint, and type-check tasks.
+
+The database and API workflow, including migrations, seeds, error and pagination formats, is documented in [API and database](api-and-database.md).
 
 Useful package commands:
 
