@@ -1,8 +1,8 @@
-import { PropertySchema } from "@tenantly/contracts";
+import { CreatePropertySchema } from "@tenantly/contracts";
 
-const exampleProperty = PropertySchema.parse({
-  id: "550e8400-e29b-41d4-a716-446655440000",
+const exampleProperty = CreatePropertySchema.parse({
   name: "Example property",
+  address: "1 Example Street, Lagos",
 });
 
 export default function HomePage() {
@@ -11,6 +11,7 @@ export default function HomePage() {
       <h1>Tenantly Admin</h1>
       <p>Manage your properties, tenants and rent.</p>
       <p>Contract example: {exampleProperty.name}</p>
+      <p>Address: {exampleProperty.address}</p>
     </main>
   );
 }

@@ -2,7 +2,7 @@
 
 A property-management dashboard for Nigerian landlords: properties, units, tenants, leases, rent tracking and a payments ledger, in one place.
 
-> **Status:** in progress, week 2 of 8. The monorepo shell, UI foundation, and shared contracts package are complete. Product features are not implemented yet. See the [roadmap](#roadmap).
+> **Status:** in progress, week 3 of 8. The monorepo shell, UI foundation, shared contracts, and API/database foundation are complete. Product features are not implemented yet. See the [roadmap](#roadmap).
 
 ## What it does
 
@@ -73,7 +73,7 @@ pnpm build
 | ---- | ------------------------------------------------------------------- | -------- |
 | 1    | Monorepo shell: workspaces, Turborepo, shared configs, git hooks    | Complete |
 | 2    | UI foundation: tokens, dark mode, Storybook; shared contracts       | Complete |
-| 3    | API and database: schema, migrations, seed data, errors, pagination |          |
+| 3    | API and database: schema, migrations, seed data, errors, pagination | Complete |
 | 4    | Authentication and role-based access, end to end                    |          |
 | 5    | Dashboard: properties, units, tenants                               |          |
 | 6    | Money: leases, rent, payments ledger, overview charts               |          |
