@@ -69,16 +69,16 @@ pnpm build
 
 ## Roadmap
 
-| Week | Focus                                                               | Status   |
-| ---- | ------------------------------------------------------------------- | -------- |
-| 1    | Monorepo shell: workspaces, Turborepo, shared configs, git hooks    | Complete |
-| 2    | UI foundation: tokens, dark mode, Storybook; shared contracts       | Complete |
-| 3    | API and database: schema, migrations, seed data, errors, pagination | Complete |
-| 4    | Authentication and role-based access, end to end                    |          |
-| 5    | Dashboard: properties, units, tenants                               |          |
-| 6    | Money: leases, rent, payments ledger, overview charts               |          |
-| 7    | Photo uploads, rent reminder emails, live updates                   |          |
-| 8    | Tests, CI, deployment                                               |          |
+| Week | Focus                                                                                                      | Status   |
+| ---- | ---------------------------------------------------------------------------------------------------------- | -------- |
+| 1    | Monorepo shell: workspaces, Turborepo, shared configs, git hooks                                           | Complete |
+| 2    | UI foundation: tokens, dark mode, Storybook; shared contracts                                              | Complete |
+| 3    | API and database: schema, migrations, seed data, errors, pagination                                        | Complete |
+| 4    | Authentication and role-based access, end to end                                                           |          |
+| 5    | Dashboard: properties, units, tenants                                                                      |          |
+| 6    | Money: leases, rent, payments ledger, overview charts                                                      |          |
+| 7    | Extras, marketing site, and brand assets: uploads, reminders, live updates, landing page, logo and favicon |          |
+| 8    | Tests, CI, and deployment for the apps and marketing site                                                  |          |
 
 ## Docs
 
