@@ -4,19 +4,21 @@ Living docs, one per flow. Each explains how something works in this repo and wh
 
 **Rule:** when a PR changes a flow, it updates that flow's doc in the same PR. A new flow gets a new file here and a row in the table.
 
-| Flow                                          | Covers                                                                                | Last updated |
-| --------------------------------------------- | ------------------------------------------------------------------------------------- | ------------ |
-| [Git and GitHub](flows/git-and-github.md)     | Repo dotfiles, branches, protection rules, merge methods, commits, issues and PRs     | Week 1       |
-| [Workspace and tooling](flows/workspace.md)   | pnpm workspace and catalog, Turborepo tasks, shared configs, UI foundation, contracts | Week 3       |
-| [API and database](flows/api-and-database.md) | Hono API, PostgreSQL, Drizzle migrations, seed data, errors and pagination            | Week 3       |
+| Flow                                                        | Covers                                                                                | Last updated |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------ |
+| [Git and GitHub](flows/git-and-github.md)                   | Repo dotfiles, branches, protection rules, merge methods, commits, issues and PRs     | Week 1       |
+| [Workspace and tooling](flows/workspace.md)                 | pnpm workspace and catalog, Turborepo tasks, shared configs, UI foundation, contracts | Week 3       |
+| [API and database](flows/api-and-database.md)               | Hono API, PostgreSQL, Drizzle migrations, seed data, errors and pagination            | Week 3       |
+| [Authentication and RBAC](flows/authentication-and-rbac.md) | Email/password sessions, role permissions, API enforcement and admin sign-in          | Week 4       |
 
-Planned as we reach them: auth and RBAC, payments ledger, deploy.
+Planned as we reach them: payments ledger, deploy.
 
 Decision records (why we chose X over Y) live in [`decisions/`](decisions/).
 
-| Decision                                                           | Summary                                                   |
-| ------------------------------------------------------------------ | --------------------------------------------------------- |
-| [0001: Monorepo shell](decisions/0001-monorepo-shell.md)           | Workspace, task runner, app and package boundaries        |
-| [0002: TypeScript version](decisions/0002-typescript-version.md)   | TypeScript 6 compatibility with typescript-eslint         |
-| [0003: UI theme tokens](decisions/0003-ui-theme-tokens.md)         | Semantic slate and emerald tokens with `data-mode` themes |
-| [0004: Database foundation](decisions/0004-database-foundation.md) | PostgreSQL, Drizzle ORM and local development setup       |
+| Decision                                                                   | Summary                                                   |
+| -------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [0001: Monorepo shell](decisions/0001-monorepo-shell.md)                   | Workspace, task runner, app and package boundaries        |
+| [0002: TypeScript version](decisions/0002-typescript-version.md)           | TypeScript 6 compatibility with typescript-eslint         |
+| [0003: UI theme tokens](decisions/0003-ui-theme-tokens.md)                 | Semantic slate and emerald tokens with `data-mode` themes |
+| [0004: Database foundation](decisions/0004-database-foundation.md)         | PostgreSQL, Drizzle ORM and local development setup       |
+| [0005: Authentication and RBAC](decisions/0005-authentication-and-rbac.md) | Password hashing, database sessions and role enforcement  |
