@@ -50,7 +50,7 @@ A property-management dashboard for Nigerian landlords, built as a portfolio pro
 7. **Extras + marketing site:** photo uploads, rent reminder emails, live updates, landing page, logo and favicon
 8. **Ship:** unit + Playwright tests, CI with caching, deploy the apps and marketing site, README, decision log
 
-**Current:** week 4 in progress (authentication and RBAC).
+**Current:** week 4 complete (authentication and RBAC); next is the core dashboard.
 
 ## Habits
 
