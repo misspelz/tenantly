@@ -1,5 +1,18 @@
 import { z } from "zod";
 
+export const UserRoleSchema = z.enum(["owner", "property_manager", "accountant"]);
+
+export const SignInSchema = z.object({
+  email: z.email().trim().toLowerCase(),
+  password: z.string().min(1).max(1024),
+});
+
+export const AuthUserSchema = z.object({
+  id: z.uuid(),
+  email: z.email(),
+  role: UserRoleSchema,
+});
+
 export const CreatePropertySchema = z.object({
   name: z.string().trim().min(1),
   address: z.string().trim().min(1),
@@ -37,6 +50,9 @@ export const ApiErrorSchema = z.object({
 });
 
 export type CreateProperty = z.infer<typeof CreatePropertySchema>;
+export type UserRole = z.infer<typeof UserRoleSchema>;
+export type SignIn = z.infer<typeof SignInSchema>;
+export type AuthUser = z.infer<typeof AuthUserSchema>;
 export type Property = z.infer<typeof PropertySchema>;
 export type PaginationQuery = z.infer<typeof PaginationQuerySchema>;
 export type PaginationMetadata = z.infer<typeof PaginationMetadataSchema>;

@@ -36,13 +36,15 @@ Do not edit an already-applied migration. Create a new migration for subsequent 
 
 ## Seed data
 
-After applying migrations, seed one deterministic example property:
+After applying migrations, add a unique development owner email and a password of 12 to 1024 characters to the repository root `.env` as `DEV_OWNER_EMAIL` and `DEV_OWNER_PASSWORD`. Do not reuse a real password. Quote the password value if it contains `#` or whitespace so dotenv does not treat it as a comment or trim it. The seed refuses to run when `NODE_ENV=production`; these credentials are for local development only.
+
+Run the seed to create the deterministic example property and development owner:
 
 ```sh
 pnpm --filter @tenantly/api db:seed
 ```
 
-The fixed UUID and `ON CONFLICT DO NOTHING` make the seed repeatable.
+The fixed property UUID and `ON CONFLICT DO NOTHING` make the seed repeatable. The owner email is trimmed and lowercased before insertion; an existing owner with that email is left unchanged.
 
 ## API conventions
 
@@ -66,10 +68,10 @@ Errors use one envelope: `{ "error": { "code": "...", "message": "...", "details
 
 ## Useful commands
 
-| Command                                         | Does                                          |
-| ----------------------------------------------- | --------------------------------------------- |
-| `pnpm --filter @tenantly/api dev`               | Run the API on port 4000                      |
-| `pnpm --filter @tenantly/api db:generate`       | Generate a migration from the Drizzle schema  |
-| `pnpm --filter @tenantly/api db:migrate`        | Apply pending migrations                      |
-| `pnpm --filter @tenantly/api db:seed`           | Insert the repeatable development property    |
-| `pnpm build` / `pnpm lint` / `pnpm check-types` | Validate the workspace and dependent packages |
+| Command                                         | Does                                                 |
+| ----------------------------------------------- | ---------------------------------------------------- |
+| `pnpm --filter @tenantly/api dev`               | Run the API on port 4000                             |
+| `pnpm --filter @tenantly/api db:generate`       | Generate a migration from the Drizzle schema         |
+| `pnpm --filter @tenantly/api db:migrate`        | Apply pending migrations                             |
+| `pnpm --filter @tenantly/api db:seed`           | Insert the repeatable development property and owner |
+| `pnpm build` / `pnpm lint` / `pnpm check-types` | Validate the workspace and dependent packages        |
